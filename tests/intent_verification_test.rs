@@ -1,5 +1,5 @@
 use dotenvy::dotenv;
-use intent_verification::verify_test_intent_with_changes;
+use intent_verification::verify_intent;
 use std::env;
 
 #[tokio::test]
@@ -24,7 +24,7 @@ async fn test_intent_verification() {
     let solution_commit2 = env::var("SOLUTION_COMMIT2")
         .unwrap_or_else(|_| "f5438f954d4d99fd8e6fecc822c046e320954d2f".to_string());
 
-    match verify_test_intent_with_changes(
+    match verify_intent(
         &test_repo_url,
         &test_commit,
         &solution_repo_url,
